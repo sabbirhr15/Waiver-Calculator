@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiver and Tuition Fee Calculator</title>
+</head>
+<body>
+    <h1>Waiver and Tuition Fee Calculator for Spring 2025</h1>
+    <p>Total Cost for SWE-241 Batch: 84,267 tk (with a registration fee of 33,867 tk).</p>
+    <p>You have to pay 33,867 tk during registration time.</p>
+
+    <label for="waiver">Your waiver (If none, write 0):</label>
+    <input type="number" id="waiver" min="0" max="100" value="0"><br><br>
+
+    <button onclick="calculateFee()">Calculate</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateFee() {
+            const totalTuition = 69600;
+            const semesterFee = 14667;
+            const regTimePayable = 33867;
+
+            // Get waiver percentage from user input
+            let waiver = document.getElementById("waiver").value;
+            waiver = parseInt(waiver);
+
+            // Calculate waiver amount
+            let waveAmount = totalTuition * (waiver / 100);
+            let afterWaiver = totalTuition - waveAmount;
+            let totalPayable = afterWaiver + semesterFee;
+
+            // Display the waiver and total payable amount
+            let result = `You have got a waiver of ${waveAmount} tk.<br><br>`;
+            result += `So, you have to pay a total of ${totalPayable} tk for the Spring 2025 semester.<br><br>`;
+
+            // Ask if registration fee is paid
+            result += `Did you pay all 33,867 tk at the time of registration?<br>`;
+
+            // Show the result message
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
